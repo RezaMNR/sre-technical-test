@@ -1,4 +1,4 @@
-# chef_docker_jenkins
+# dockerhost
 
 TODO: Enter the cookbook description here.
 

@@ -31,7 +31,7 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[chef_docker_jenkins::default]
+      - recipe[docker_jenkins::default]
     verifier:
       inspec_tests:
         - test/integration/default
