@@ -13,4 +13,5 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build ./script-app/web-vote-app/ --file Dockerfile --tag web-vote-app:$(date +%s)
+      working-directory: script-app
+      run: docker build web-vote-app --file web-vote-app/Dockerfile --tag web-vote-app:$(date +%s)
