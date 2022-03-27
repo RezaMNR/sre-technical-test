@@ -18,9 +18,6 @@ jobs:
           - context: ./script-app/results-app
             image: results-app
             file: ./script-app/results-app/Dockerfile
-          - context: ./script-app/vote-worker
-            image: rvote-worker
-            file: ./script-app/vote-worker/Dockerfile
     permissions:
       contents: read
       packages: write
