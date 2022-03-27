@@ -10,13 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      working-directory: script-app
       matrix:
         include:
-          - dockerfile: web-vote-app/Dockerfile
+          - dockerfile: script-app/web-vote-app/Dockerfile
             image: web-vote-app
-          - dockerfile: results-app/Dockerfile
+            project: script-app/web-vote-app
+          - dockerfile: script-app/results-app/Dockerfile
             image: results-app
+            project: script-app/results-app
     permissions:
       contents: read
       packages: write
@@ -38,6 +39,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v2
         with:
+          project: ${{ matrix.project }}
           context: .
           file: ${{ matrix.dockerfile }}
           push: true
