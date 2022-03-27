@@ -40,4 +40,5 @@ jobs:
           context: .
           file: ${{ matrix.dockerfile }}
           push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.image }}:latest
           labels: ${{ matrix.image }}
