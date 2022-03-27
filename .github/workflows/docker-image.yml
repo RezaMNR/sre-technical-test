@@ -12,12 +12,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - dockerfile: script-app/web-vote-app/Dockerfile
+          - context: ./script-app/web-vote-app
             image: web-vote-app
-            project: script-app/web-vote-app
-          - dockerfile: ./script-app/results-app/Dockerfile
+            file: ./script-app/web-vote-app/Dockerfile
+          - context: ./script-app/results-app
             image: results-app
-            project: /script-app/results-app
+            file: ./script-app/results-app/Dockerfile
     permissions:
       contents: read
       packages: write
