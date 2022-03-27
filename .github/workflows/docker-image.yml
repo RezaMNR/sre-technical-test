@@ -10,11 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+      working-directory: script-app
       matrix:
         include:
-          - dockerfile: script-app/web-vote-app/Dockerfile
+          - dockerfile: web-vote-app/Dockerfile
             image: web-vote-app
-          - dockerfile: script-app/results-app/Dockerfile
+          - dockerfile: results-app/Dockerfile
             image: results-app
     permissions:
       contents: read
