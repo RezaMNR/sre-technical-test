@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Build and push to docker hub
 
 on:
   pull_request:
@@ -6,10 +6,19 @@ on:
   workflow_dispatch:
 
 jobs:
-
-  build:
-
+  build-and-push-image:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - dockerfile: ./script-app/web-vote-app/Dockerfile
+            image: web-vote-app
+          - dockerfile: ./script-app/results-app/Dockerfile
+            image: results-app
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       -
@@ -28,6 +37,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: "{{defaultContext}}:script-app:web-vote-app"
+          context: .
+          file: ${{ matrix.dockerfile }}
           push: true
-          tags: rezamnr/web-vote-app:latest
+          labels: ${{ matrix.image }}
