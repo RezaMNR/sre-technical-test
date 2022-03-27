@@ -14,10 +14,10 @@ jobs:
         include:
           - dockerfile: script-app/web-vote-app/Dockerfile
             image: web-vote-app
-            project: script-app/web-vote-app
+            project: ./script-app/web-vote-app
           - dockerfile: script-app/results-app/Dockerfile
             image: results-app
-            project: script-app/results-app
+            project: ./script-app/results-app
     permissions:
       contents: read
       packages: write
