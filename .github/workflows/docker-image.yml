@@ -12,10 +12,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - dockerfile: ./script-app/web-vote-app/Dockerfile
+          - dockerfile: script-app/web-vote-app/Dockerfile
             image: web-vote-app
             project: ./script-app/web-vote-app
-          - dockerfile: ./script-app/results-app/Dockerfile
+          - dockerfile: script-app/results-app/Dockerfile
             image: results-app
             project: ./script-app/results-app
     permissions:
@@ -39,9 +39,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v2
         with:
-          project: ${{ matrix.project }}
-          context: .
-          file: ${{ matrix.dockerfile }}
+          context: ${{ matrix.project }}
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.image }}:latest
           labels: ${{ matrix.image }}
