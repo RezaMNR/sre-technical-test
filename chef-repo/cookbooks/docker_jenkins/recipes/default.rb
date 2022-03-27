@@ -27,5 +27,5 @@ docker_container 'my_jenkins' do
     tag 'lts'
     port '50000:50000'
     port '8080:8080'
-    volumes "/home/jenkins_home/secrets/:/var/jenkins_home/secrets/"
+    volumes ['/home/jenkins_home/secrets/:/var/jenkins_home/secrets/', '/var/run/docker.sock:/var/run/docker.sock']
 end
