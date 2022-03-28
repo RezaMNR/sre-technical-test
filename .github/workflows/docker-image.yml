@@ -45,11 +45,13 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.image }}:latest
           labels: ${{ matrix.image }}
-
-      - name: trigger single Job
+    steps:
+      - 
+        name: trigger single Job
         uses: appleboy/jenkins-action@master
         with:
           url: "http://167.172.68.62:8080"
           user: "rezamnr"
           token: ${{ secrets.TOKEN }}
           job: "Deploy-to-swarm"
+
