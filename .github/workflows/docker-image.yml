@@ -45,7 +45,6 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.image }}:latest
           labels: ${{ matrix.image }}
-    steps:
       - 
         name: trigger single Job
         uses: appleboy/jenkins-action@master
